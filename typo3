@@ -1,0 +1,6 @@
+sudo chmod 777 /home/ratanak/dev/yourproject/typo3conf/LocalConfiguration.php
+		   sudo chmod 777 /home/ratanak/dev/yourproject/typo3conf/ext/
+sudo chmod 777 /home/ratanak/dev/yourproject/typo3conf/
+sudo chmod 777 /home/ratanak/dev/yourproject/typo3temp/
+sudo chmod 777 /home/ratanak/dev/yourproject/fileadmin/
+sudo chmod 777 /home/ratanak/dev/yourproject/uploads/
