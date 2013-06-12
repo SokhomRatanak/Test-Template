@@ -19,3 +19,62 @@ sudo chmod 777 /home/ratanak/dev/yourproject/uploads/
         </Directory>
 
 </VirtualHost>
+
+
+page.includeCSS {
+  mainCSS = fileadmin/templates/Training/css/style.css
+cooliris.external = 1
+}
+
+sudo chmod -R 775 typo3temp/ typo3conf/ fileadmin/ uploads/
+Sudo chown -R ratanak:www-data ratanak
+
+cd /etc/php5/apache2/
+sudo gedit php.ini
+
+
+
+Temmplate Integration
+
+	- integrate static HTML into T3
+
+Template Engine
+
+	- TemplaVoila
+	- Automake Template
+	- FLUID
+	- Pure TypoScript
+
+TemplaVoila
+
+	- Backend Module
+	- Storage to DS/TO
+
+
+Homework
+
+	1. Compress & Concatenate
+		- CSS
+		- JS
+
+	2. JavaScript Ordering
+		- Head
+		- Body
+		- Footer
+	3. Inline vs File [optional]
+
+
+Setup Blank T3
+
+	1. File
+		1. /home/###YOU_USERNAME###/dev/demo1
+		2. [optional] -> sudo chown -R sengchheang:www-data demo1
+		3. [optional] -> chmod 775 typo3temp/ fileadmin/ uploads/ typo3conf/ -R
+	2. Virtual Host
+		1. cd /etc/apache2/sites-available
+		2. make virtual host file / configuration (by your own)
+		3. sudo a2ensite local.demo1
+		4. sudo service apache2 rel
+	3. Hosts (loopback IP Address)
+		1. cd /etc/
+		2. sudo nano hosts -> 127.0.0.1 local.demo1
