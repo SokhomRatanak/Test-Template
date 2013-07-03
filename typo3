@@ -78,3 +78,5 @@ Setup Blank T3
 	3. Hosts (loopback IP Address)
 		1. cd /etc/
 		2. sudo nano hosts -> 127.0.0.1 local.demo1
+		
+http://wbpreview.com/previews/WB0878D30/index.html
