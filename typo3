@@ -142,3 +142,68 @@ Instructions
 ====================================================
 End of Install unicorn
 ====================================================
+
+
+====================================================
+Install W3C
+====================================================
+HOW-TO install w3c-markup-validator
+Skip to end of metadata
+Added by Kai Atkins, last edited by Kai Atkins on Jul 02, 2013  (view change) Go to start of metadata
+Table of Contents
+Requirements
+Instructions
+Tips & Warnings
+Purpose
+The steps below will walk you through installation and use of the local w3c validator and external HTML5 validator.
+Requirements
+Ubuntu
+Apache
+w3c-markup-validator
+HTML5 validation needs an internet connection
+Instructions
+sudo apt-get install w3c-markup-validator
+sudo gedit /etc/apache2/sites-available/validator
+Fill in the following data in the opened file:
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /usr/share/w3c-markup-validator/html/
+    ServerName validator
+    ScriptAlias /check /usr/lib/cgi-bin/w3c-markup-validator/check
+    ErrorLog /var/log/apache2/validator-error_log
+    CustomLog /var/log/apache2/validator-access_log combined
+</VirtualHost>
+
+Add validator to hosts file by opening it:
+$ sudo gedit /etc/hosts
+Then add the line:
+127.0.0.1 validator
+
+sudo a2ensite validator
+sudo service apache2 reload
+sudo gedit /etc/w3c/validator.conf
+Change the line:
+Allow Private IPs = no
+to
+Allow Private IPs = yes
+
+Add the external html5 validator, by adding the line
+HTML5 = http://html5.validator.nu/
+in the External section, e.g. :
+<External>
+## Enable checking documents via external services.
+## The example config below assumes that you have installed the validator.nu
+## engine on the same machine as the markup validator.
+## See http://about.validator.nu/ for installation instructions.
+#HTML5 = http://localhost:8888/html5/
+#CompoundXML = http://localhost:8888/
+HTML5 = http://html5.validator.nu/
+</External>
+Save and close the file.
+Tips & Warnings
+If you want html5 validation, you must follow step 9 
+To learn HOW-TO use w3c-markup-validator
+To learn HOW-TO understand HTML validation
+=============================================
+End of install W3C
+=============================================
