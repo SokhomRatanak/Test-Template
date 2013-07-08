@@ -82,3 +82,63 @@ Setup Blank T3
 http://wbpreview.com/previews/WB0878D30/index.html
 
 https://github.com/teambox/teambox/wiki/Installing-on-Ubuntu-using-Apache-and-Unicorn
+
+
+=====================================================
+Install Unicorn
+=====================================================
+Internal Production Quality DepartmentPages …  Web Standards & Validation
+HOW-TO install unicorn under validator
+Skip to end of metadata
+Added by Ratha Heang, last edited by Ratha Heang on Jul 08, 2013  (view change) Go to start of metadata
+Requirements
+Ubuntu
+Apache Tomcat
+Apache
+Apache Ant
+Apache Ivy
+unicorn - W3C's Unified Validator
+Instructions
+1. Download ivy-2.3.0.jar
+    http://apache.mirrors.tds.net//ant/ivy/2.3.0/apache-ivy-2.3.0-bin.tar.gz
+2. Extract file..
+    sudo tar -zxvf apache-ivy-2.3.0-bin.tar.gz
+    cd apache-ivy-2.3.0-bin/
+3. Copy ivy-2.3.0.jar to /usr/share/ant/lib
+    sudo cp ivy-2.3.0.jar /usr/share/ant/lib/
+4. Download unicorn validator.
+    https://dvcs.w3.org/hg/unicorn/archive/tip.tar.gz
+5. Extract the file
+    sudo tar -zxvf tip.tar.gz
+    cd unicorn-*
+6. Use ant command to build unicorn
+    sudo ant retrieve compress-css compress-js default_conf war cli
+7. After build success you should have directory name “dist”
+8. Copy unicorn.war in dist directory to apache tomcat webapps “/var/lib/tomcat*/webapps/”
+    sudo cp dist/unicorn.war /var/lib/tomcat*/webapps/
+9. Restart service tomcat
+    sudo /etc/init.d/tomcat* restart
+10. Test your website.
+    http://localhost:8080/unicorn
+11. Testing pass add unicorn site to apache proxypass.
+12. Enable proxypass in apache
+    sudo a2enmod
+    Type: proxy → Enter
+13. Add proxypass to validator
+     sudo vi /etc/apache2/sites-available/validator
+
+       <Location /unicorn>
+        Order allow, deny
+        Allow from all
+      </Location>
+      proxypass /unicorn http://localhost:8080/unicorn
+      proxypassrever /unicorn http://localhost:8080/unicorn
+
+14. save and close
+15. restart apache service..
+16. Test site
+     http://local.validator
+     http://local.validator/unicorn
+====================================================
+End of Install unicorn
+====================================================
